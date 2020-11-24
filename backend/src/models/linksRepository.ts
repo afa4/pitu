@@ -5,7 +5,7 @@ function findByCode(code: string) {
     return linkModel.findOne<ILinkModel>({ where: { code } });
 }
 
-function add(link: Link) {
+async function add(link: Link) {
     return linkModel.create<ILinkModel>(link);
 }
 

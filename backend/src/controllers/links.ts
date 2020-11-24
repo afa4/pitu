@@ -1,8 +1,6 @@
 import { Request, Response } from 'express';
-import { Link } from '../models/link'
-
-const links: Link[] = [];
-let nextId = 1;
+import { Link } from '../models/link';
+import linksRepository from '../models/linksRepository'
 
 function generateCode(): string {
     let text = '';
@@ -14,15 +12,16 @@ function generateCode(): string {
     return text;
 }
 
-function postLink(req: Request, res: Response) {
+async function postLink(req: Request, res: Response) {
     const link = req.body as Link;
 
-    link.id = nextId++;
     link.code = generateCode();
-    link.hits = 0;
-    links.push(link);
+    const result = await linksRepository.add(link);
 
-    res.status(201).json(link);
+    if(!result.id)
+        return res.sendStatus(400);
+    
+    return res.status(201).json(link);
 }
 
 function getLink(req: Request, res: Response, hit: boolean) {
