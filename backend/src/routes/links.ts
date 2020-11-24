@@ -8,11 +8,11 @@ router.post('/links', (req, res) => {
 });
 
 router.get('/links/:code', (req, res) => {
-    linksController.getLink(req, res, true);
+    linksController.hitLink(req, res);
 });
 
 router.get('/links/:code/stats', (req, res) => {
-    linksController.getLink(req, res, false);
+    linksController.getLink(req, res);
 });
 
 export default router;
