@@ -24,16 +24,16 @@ async function postLink(req: Request, res: Response) {
     return res.status(201).json(link);
 }
 
-function getLink(req: Request, res: Response, hit: boolean) {
+async function getLink(req: Request, res: Response, hit: boolean) {
     const code = req.params.code as string;
-    const index = links.findIndex(item => item.code === code);
+    const result = await linksRepository.findByCode(code);
 
-    if (index === -1) {
+    if (!result)
         res.sendStatus(404);
-    } else {
+    else {
         if(hit)
-            links[index].hits++;
-        res.json(links[index]);
+            await linksRepository.hit(code);
+        res.json(result);
     }
 }
 
