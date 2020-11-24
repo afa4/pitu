@@ -1,8 +1,13 @@
-## Comandos para criação do projeto
+# Things I've learned doing this app
+
+## Start a new node projet
 `npm init -y`
 
-## Execução do typescript no contexto do projeto
+## Adding typescript support
+`npm install typescript`
+
+## Compiling typescript in project scope
 `npx tsc --init`
 
-## Passwords para o certificado:
+## Certificate Password:
 \# 1 FOCO
