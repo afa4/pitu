@@ -9,5 +9,6 @@
 ## Compiling typescript in project scope
 `npx tsc --init`
 
-## Certificate Password:
+## Certificate Passwords:
 \# 1 FOCO
+\# 2 PERSISTÊNCIA
